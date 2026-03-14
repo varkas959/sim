@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support – Ship Inspection's Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --accent: #0ea5e9;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    header {
+      padding: 32px 0 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    header a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    header a:hover { color: var(--accent); }
+    h1 { font-size: 1.75rem; margin: 32px 0 16px; color: var(--text); }
+    p { margin-bottom: 14px; color: var(--text-muted); }
+    .contact {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 24px 0 32px;
+    }
+    .contact a { color: var(--accent); text-decoration: none; }
+    .contact a:hover { text-decoration: underline; }
+    .back { margin-top: 32px; }
+    .back a { color: var(--accent); text-decoration: none; }
+    .back a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="/">← Back to SIM</a>
+    </header>
+    <h1>Support</h1>
+    <p>Need help with Ship Inspection's Management? We're here for you.</p>
+    <div class="contact">
+      <p><strong>Contact us</strong></p>
+      <p>For app support, account issues, or questions about inspections, reach out at:</p>
+      <p><a href="mailto:support@marine-sim.com">support@marine-sim.com</a></p>
+      <p style="margin-top: 16px; font-size: 0.9rem;">We aim to respond within 1–2 business days.</p>
+    </div>
+    <p>For privacy-related requests, see our <a href="/privacy" style="color: var(--accent);">Privacy Policy</a>.</p>
+    <p class="back"><a href="/">← Back to SIM</a></p>
+  </div>
+</body>
+</html>

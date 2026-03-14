@@ -13,6 +13,8 @@
 ## URLs after deploy
 
 - **Landing:** `https://your-project.vercel.app/` (or `https://marine-sim.com` after domain is set)
+- **Support (for App Store Connect):** `https://your-project.vercel.app/support` (or `https://marine-sim.com/support`)
 - **Privacy (for App Store):** `https://your-project.vercel.app/privacy` (or `https://marine-sim.com/privacy`)
 
-Use the full Privacy URL in App Store Connect → App Privacy → Privacy Policy URL.
+Use the **Support URL** in App Store Connect → App Information / Version → Support URL.  
+Use the **Privacy URL** in App Store Connect → App Privacy → Privacy Policy URL.

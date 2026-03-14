@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIM – Ship Inspection's Management</title>
+  <meta name="description" content="Ship Inspection's Management – Streamline vessel inspections, capture evidence, and manage reviews in one app." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --accent: #0ea5e9;
+      --accent-muted: rgba(14, 165, 233, 0.15);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.35rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+    .logo span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: 24px;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--accent); }
+    .hero {
+      padding: 80px 0 100px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero .tagline {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto 40px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--accent-muted);
+      color: var(--accent);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 32px;
+    }
+    .features {
+      padding: 60px 0 80px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .features h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 48px;
+      color: var(--text);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .card h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--text); }
+    .card p { font-size: 0.95rem; color: var(--text-muted); }
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin: 0 12px;
+      font-size: 0.9rem;
+    }
+    footer a:hover { color: var(--accent); }
+    footer .copy { margin-top: 16px; font-size: 0.85rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <div class="logo">SIM<span>.</span></div>
+      <nav>
+        <a href="/privacy">Privacy Policy</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <p class="badge">Maritime inspections, simplified</p>
+        <h1>Ship Inspection's Management</h1>
+        <p class="tagline">Run vessel inspections on mobile, capture photos and answers, and get reviews done—online or offline.</p>
+      </div>
+    </section>
+    <section class="features">
+      <div class="container">
+        <h2>Why SIM</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Mobile-first</h3>
+            <p>Inspectors use phones or tablets in the field. Complete checklists and attach evidence on the spot.</p>
+          </div>
+          <div class="card">
+            <h3>Offline support</h3>
+            <p>Work without connectivity. Data syncs when you're back online so nothing is lost.</p>
+          </div>
+          <div class="card">
+            <h3>Review workflow</h3>
+            <p>Captains and reviewers approve or send back inspections. Clear status and feedback for everyone.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <a href="/privacy">Privacy Policy</a>
+      <span class="copy">© Ship Inspection's Management. All rights reserved.</span>
+    </div>
+  </footer>
+</body>
+</html>

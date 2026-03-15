@@ -3,153 +3,586 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SIM – Ship Inspection's Management</title>
-  <meta name="description" content="Ship Inspection's Management – Streamline vessel inspections, capture evidence, and manage reviews in one app." />
+  <title>Marine-Sim – Digital Marine Inspection & Audit Platform</title>
+  <meta name="description" content="Marine-Sim is a digital marine inspection and audit platform designed for ship inspectors and maritime organizations. Simplify vessel inspections, audits, and compliance management." />
+  <meta name="keywords" content="marine inspection software, ship inspection system, maritime audit platform, vessel inspection app, marine compliance, ship audit" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0f172a;
-      --surface: #1e293b;
-      --accent: #0ea5e9;
-      --accent-muted: rgba(14, 165, 233, 0.15);
+      --navy: #0c1929;
+      --navy-mid: #132f4c;
+      --navy-surface: #1a365d;
+      --ocean: #0ea5e9;
+      --ocean-muted: rgba(14, 165, 233, 0.2);
       --text: #f1f5f9;
       --text-muted: #94a3b8;
+      --white: #ffffff;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
+      background: var(--navy);
       color: var(--text);
       line-height: 1.6;
       min-height: 100vh;
     }
-    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
-    header {
-      padding: 24px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .header-inner { display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 1.35rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
-    .logo span { color: var(--accent); }
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 500;
-      margin-left: 24px;
-      transition: color 0.2s;
-    }
-    nav a:hover { color: var(--accent); }
-    .hero {
-      padding: 80px 0 100px;
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: clamp(2.25rem, 5vw, 3.25rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-    .hero .tagline {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      max-width: 540px;
-      margin: 0 auto 40px;
-    }
-    .badge {
-      display: inline-block;
-      background: var(--accent-muted);
-      color: var(--accent);
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 32px;
-    }
-    .features {
-      padding: 60px 0 80px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .features h2 {
-      font-size: 1.75rem;
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 80px 0; }
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
       font-weight: 700;
       text-align: center;
       margin-bottom: 48px;
       color: var(--text);
+      letter-spacing: -0.02em;
     }
-    .grid {
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 0;
+      background: rgba(12, 25, 41, 0.95);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(8px);
+    }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.4rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+    .logo span { color: var(--ocean); }
+    nav { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--ocean); }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 100px 0 120px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--ocean-muted) 0%, transparent 60%),
+                  linear-gradient(180deg, transparent 0%, var(--navy) 100%);
+      pointer-events: none;
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero .subheadline {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 40px;
+      line-height: 1.65;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      min-height: 48px;
+    }
+    .btn-primary {
+      background: var(--ocean);
+      color: var(--white);
+    }
+    .btn-primary:hover { box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4); transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--ocean);
+      border: 2px solid var(--ocean);
+    }
+    .btn-secondary:hover { background: var(--ocean-muted); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.12); }
+
+    /* Cards */
+    .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 24px;
     }
     .card {
-      background: var(--surface);
+      background: var(--navy-surface);
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 16px;
       padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
     }
-    .card h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--text); }
-    .card p { font-size: 0.95rem; color: var(--text-muted); }
-    footer {
-      padding: 32px 0;
-      border-top: 1px solid rgba(255,255,255,0.06);
+    .card:hover { border-color: rgba(14, 165, 233, 0.3); transform: translateY(-2px); }
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--ocean-muted);
+      color: var(--ocean);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    .card h3 { font-size: 1.15rem; margin-bottom: 8px; color: var(--text); }
+    .card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* Workflow */
+    .workflow {
+      background: linear-gradient(180deg, var(--navy-mid) 0%, var(--navy) 100%);
+    }
+    .workflow-steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .workflow-step {
+      flex: 1 1 160px;
+      max-width: 200px;
       text-align: center;
+      padding: 24px 16px;
+      background: var(--navy-surface);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.06);
     }
-    footer a {
+    .workflow-step .num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--ocean);
+      color: var(--white);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      font-size: 1.1rem;
+    }
+    .workflow-step h4 { font-size: 1rem; margin-bottom: 6px; color: var(--text); }
+    .workflow-step p { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* Features - Why Marine-Sim */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    /* Mobile App + QR */
+    .mobile-section { background: var(--navy-mid); }
+    .mobile-intro {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 48px;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+    .mobile-intro ul {
+      text-align: left;
+      margin-top: 16px;
+      padding-left: 24px;
+    }
+    .mobile-intro li { margin-bottom: 8px; }
+    .qr-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      max-width: 700px;
+      margin: 0 auto 32px;
+    }
+    @media (max-width: 600px) { .qr-row { grid-template-columns: 1fr; } }
+    .qr-block {
+      text-align: center;
+      padding: 32px 24px;
+      background: var(--navy-surface);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .qr-placeholder {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 20px;
+      background: rgba(255,255,255,0.06);
+      border: 2px dashed rgba(255,255,255,0.2);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .qr-block h4 { margin-bottom: 8px; font-size: 1.2rem; }
+    .qr-block p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px; }
+    .store-btn {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 10px 20px;
+      background: rgba(255,255,255,0.1);
+      color: var(--text);
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .store-btn:hover { background: rgba(255,255,255,0.15); }
+    .qr-hint {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 24px;
+    }
+
+    /* Reporting */
+    .reporting-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .reporting-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+      background: var(--navy-surface);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .reporting-item::before {
+      content: '✓';
+      color: var(--ocean);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    /* Who Uses */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-surface) 100%);
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .cta-section h2 { margin-bottom: 16px; }
+    .cta-section p {
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      font-size: 1.1rem;
+    }
+    .cta-buttons { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+
+    /* Footer */
+    footer {
+      padding: 48px 0 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+    .footer-grid h4 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .footer-grid a {
+      display: block;
       color: var(--text-muted);
       text-decoration: none;
-      margin: 0 12px;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      transition: color 0.2s;
     }
-    footer a:hover { color: var(--accent); }
-    footer .copy { margin-top: 16px; font-size: 0.85rem; color: var(--text-muted); }
+    .footer-grid a:hover { color: var(--ocean); }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
   <header>
     <div class="container header-inner">
-      <div class="logo">SIM<span>.</span></div>
+      <a href="/" class="logo">Marine-Sim<span>.</span></a>
       <nav>
+        <a href="/#capabilities">Capabilities</a>
+        <a href="/#workflow">Workflow</a>
+        <a href="/#features">Features</a>
+        <a href="/#mobile">Mobile App</a>
         <a href="/support">Support</a>
-        <a href="/privacy">Privacy Policy</a>
+        <a href="/privacy">Privacy</a>
       </nav>
     </div>
   </header>
+
   <main>
     <section class="hero">
       <div class="container">
-        <p class="badge">Maritime inspections, simplified</p>
-        <h1>Ship Inspection's Management</h1>
-        <p class="tagline">Run vessel inspections on mobile, capture photos and answers, and get reviews done—online or offline.</p>
+        <h1>Digital Marine Inspection & Audit Platform</h1>
+        <p class="subheadline">Simplify vessel inspections, audits, and compliance management with a modern digital inspection system designed for maritime professionals.</p>
+        <div class="hero-buttons">
+          <a href="#mobile" class="btn btn-primary">Start Inspection</a>
+          <a href="/support" class="btn btn-secondary">Request Demo</a>
+          <a href="#capabilities" class="btn btn-ghost">View Platform</a>
+        </div>
       </div>
     </section>
-    <section class="features">
+
+    <section id="capabilities" class="section">
       <div class="container">
-        <h2>Why SIM</h2>
-        <div class="grid">
+        <h2 class="section-title">Inspection & Audit Capabilities</h2>
+        <div class="card-grid">
           <div class="card">
-            <h3>Mobile-first</h3>
-            <p>Inspectors use phones or tablets in the field. Complete checklists and attach evidence on the spot.</p>
+            <div class="card-icon">🛳</div>
+            <h3>Vessel Inspections</h3>
+            <p>Perform structured inspections with guided checklists.</p>
           </div>
           <div class="card">
-            <h3>Offline support</h3>
-            <p>Work without connectivity. Data syncs when you're back online so nothing is lost.</p>
+            <div class="card-icon">📋</div>
+            <h3>Compliance Audits</h3>
+            <p>Conduct regulatory and safety audits.</p>
           </div>
           <div class="card">
-            <h3>Review workflow</h3>
-            <p>Captains and reviewers approve or send back inspections. Clear status and feedback for everyone.</p>
+            <div class="card-icon">📍</div>
+            <h3>Findings & Issue Tracking</h3>
+            <p>Track inspection findings and corrective actions.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">📄</div>
+            <h3>Digital Reports</h3>
+            <p>Automatically generate professional inspection reports.</p>
           </div>
         </div>
       </div>
     </section>
+
+    <section id="workflow" class="section workflow">
+      <div class="container">
+        <h2 class="section-title">Simple Inspection Workflow</h2>
+        <div class="workflow-steps">
+          <div class="workflow-step">
+            <div class="num">1</div>
+            <h4>Create Inspection</h4>
+            <p>Set up vessel and inspection type.</p>
+          </div>
+          <div class="workflow-step">
+            <div class="num">2</div>
+            <h4>Perform Vessel Checks</h4>
+            <p>Follow guided checklists on site.</p>
+          </div>
+          <div class="workflow-step">
+            <div class="num">3</div>
+            <h4>Capture Photos & Findings</h4>
+            <p>Attach evidence and record issues.</p>
+          </div>
+          <div class="workflow-step">
+            <div class="num">4</div>
+            <h4>Submit Digital Report</h4>
+            <p>Send for review with one tap.</p>
+          </div>
+          <div class="workflow-step">
+            <div class="num">5</div>
+            <h4>Reviewer Approval</h4>
+            <p>Approved or sent back for corrections.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="container">
+        <h2 class="section-title">Why Marine-Sim</h2>
+        <div class="features-grid card-grid">
+          <div class="card">
+            <div class="card-icon">📱</div>
+            <h3>Mobile Inspection App</h3>
+            <p>Perform inspections directly from your phone or tablet.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">📡</div>
+            <h3>Offline Inspections</h3>
+            <p>Continue inspections even without internet connection.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">📷</div>
+            <h3>Photo Evidence Capture</h3>
+            <p>Attach photos to findings and reports.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">✅</div>
+            <h3>Compliance Tracking</h3>
+            <p>Monitor audit results and corrective actions.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">☁️</div>
+            <h3>Cloud Data Sync</h3>
+            <p>Secure inspection data storage.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">👥</div>
+            <h3>Role-Based Access</h3>
+            <p>Inspectors, reviewers, and administrators.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mobile" class="section mobile-section">
+      <div class="container">
+        <h2 class="section-title">Marine-Sim Mobile App</h2>
+        <p class="mobile-intro">
+          Perform inspections anytime using the Marine-Sim mobile application.
+          <ul>
+            <li>Complete vessel inspections</li>
+            <li>Capture photo evidence</li>
+            <li>Submit findings</li>
+            <li>Work offline</li>
+            <li>Sync reports instantly</li>
+          </ul>
+        </p>
+        <div class="qr-row">
+          <div class="qr-block">
+            <div class="qr-placeholder">[ iOS QR CODE ]</div>
+            <h4>iOS App</h4>
+            <p>Scan to download the Marine-Sim iOS app.</p>
+            <a href="https://apps.apple.com" class="store-btn" target="_blank" rel="noopener">App Store</a>
+          </div>
+          <div class="qr-block">
+            <div class="qr-placeholder">[ ANDROID QR CODE ]</div>
+            <h4>Android App</h4>
+            <p>Scan to download the Marine-Sim Android app.</p>
+            <a href="https://play.google.com" class="store-btn" target="_blank" rel="noopener">Google Play</a>
+          </div>
+        </div>
+        <p class="qr-hint">Scan with your phone camera to install the app instantly.</p>
+      </div>
+    </section>
+
+    <section id="reporting" class="section">
+      <div class="container">
+        <h2 class="section-title">Inspection Reports & Insights</h2>
+        <div class="reporting-grid">
+          <div class="reporting-item">Automated inspection reports</div>
+          <div class="reporting-item">Track inspection performance</div>
+          <div class="reporting-item">Audit compliance trends</div>
+          <div class="reporting-item">Review pending inspections</div>
+          <div class="reporting-item">Export reports to PDF</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="audience" class="section workflow">
+      <div class="container">
+        <h2 class="section-title">Built for Maritime Professionals</h2>
+        <div class="audience-grid card-grid">
+          <div class="card">
+            <div class="card-icon">🔍</div>
+            <h3>Ship Inspectors</h3>
+            <p>Conduct vessel inspections easily.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🏢</div>
+            <h3>Shipping Companies</h3>
+            <p>Maintain compliance and safety standards.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🎓</div>
+            <h3>Maritime Training Institutions</h3>
+            <p>Monitor inspection activities.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">📊</div>
+            <h3>Surveyors & Auditors</h3>
+            <p>Conduct audits and assessments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="section-title">Modernize Your Marine Inspections</h2>
+        <p>Replace paper-based inspections with a powerful digital inspection platform.</p>
+        <div class="cta-buttons">
+          <a href="/support" class="btn btn-primary">Request Demo</a>
+          <a href="/support" class="btn btn-secondary">Contact Sales</a>
+        </div>
+      </div>
+    </section>
   </main>
+
   <footer>
     <div class="container">
-      <a href="/support">Support</a>
-      <a href="/privacy">Privacy Policy</a>
-      <span class="copy">© Ship Inspection's Management. All rights reserved.</span>
+      <div class="footer-grid">
+        <div>
+          <h4>Company</h4>
+          <a href="/#capabilities">About</a>
+          <a href="/support">Contact</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="/privacy">Privacy Policy</a>
+        </div>
+        <div>
+          <h4>Help</h4>
+          <a href="/support">Support</a>
+        </div>
+      </div>
+      <div class="footer-bottom">© Marine-Sim. All rights reserved.</div>
     </div>
   </footer>
 </body>

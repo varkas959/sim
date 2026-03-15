@@ -1,4 +1,8 @@
-# SIM Landing + Privacy (for Vercel)
+# Marine-Sim Landing + Privacy (for Vercel)
+
+Landing site for **marine-sim.com**: digital marine inspection & audit platform. Includes hero, capabilities, workflow, features, mobile app (QR placeholders), reporting, audience, CTA, and footer. Dark navy/ocean theme, responsive, SEO meta and keywords.
+
+**Placeholders to replace when ready:** In `index.html`, update the Mobile App section: replace `[ iOS QR CODE ]` and `[ ANDROID QR CODE ]` with real QR image URLs or inline SVGs, and set the App Store / Google Play links to your actual store URLs.
 
 ## Deploy to Vercel
 
